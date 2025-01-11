@@ -1,4 +1,5 @@
-import 'package:cloud_craft/screen/serach_news_screen.dart';
+import 'package:cloud_craft/screen/bottom_navigation/dashboard_screen.dart';
+import 'package:cloud_craft/screen/bottom_navigation/serach_news_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: SearchNewsScreen(),
+      home: DashboardScreen(),
     );
   }
 }
@@ -39,4 +40,10 @@ class MyApp extends StatelessWidget {
 /// this is my API Key => 2229dabd1a32432ca9b279d40d523c6e
 /// flow steps to get api key
 /// data fetch => DONE
-/// Details Screen =>
+/// Details Screen => DONE
+///
+/// Step 3
+/// Dashboard screen Create => DONE
+///
+/// Step 4
+/// Home Screen

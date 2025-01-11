@@ -2,6 +2,7 @@ import 'package:cloud_craft/constants/colors.dart';
 import 'package:cloud_craft/data/api/api_helper.dart';
 import 'package:cloud_craft/domain/utils.dart';
 import 'package:cloud_craft/model/every_news_model.dart';
+import 'package:cloud_craft/screen/news_details_screen.dart';
 import 'package:flutter/material.dart';
 
 class SearchNewsScreen extends StatefulWidget {
@@ -59,6 +60,7 @@ class _SearchNewsScreenState extends State<SearchNewsScreen> {
                             width: 2, color: AppColors.primaryLight)),
                     hintText: "Search News",
                     hintStyle: myTextStyle18(),
+                    /// search button
                     suffixIcon: IconButton(
 
                         /// here we call
@@ -81,7 +83,10 @@ class _SearchNewsScreenState extends State<SearchNewsScreen> {
                             ));
                           }
                         },
-                        icon: const Icon(
+                        /// search icon
+                        icon: isLoading
+                            ? const Center(child: CircularProgressIndicator())
+                            : const Icon(
                           Icons.search_rounded,
                           size: 30,
                           color: AppColors.secondary,
@@ -90,9 +95,7 @@ class _SearchNewsScreenState extends State<SearchNewsScreen> {
             ),
 
             /// Reflect Data here
-            isLoading
-                ? const Center(child: CircularProgressIndicator())
-                : articles.isEmpty
+             articles.isEmpty
                     ? Center(
                         child: Text(
                           "No News Found",
@@ -125,6 +128,24 @@ class _SearchNewsScreenState extends State<SearchNewsScreen> {
                                 style: myTextStyle14(
                                     textColor: Colors.blue.shade900),
                               ),
+
+                              /// when click on list tile Navigate to Details screen
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => NewsDetailsScreen(
+                                            imagePath: myArticles.urlToImage
+                                                .toString(),
+                                          source: myArticles.source!.name.toString(),
+                                          title: myArticles.title.toString(),
+                                          desc: myArticles.description.toString(),
+                                          cont: myArticles.content.toString(),
+                                          time: myArticles.publishedAt.toString(),
+                                          author: myArticles.author.toString(),
+
+                                        )));
+                              },
                             ),
                           );
                         },

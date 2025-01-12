@@ -60,6 +60,7 @@ class _SearchNewsScreenState extends State<SearchNewsScreen> {
                             width: 2, color: AppColors.primaryLight)),
                     hintText: "Search News",
                     hintStyle: myTextStyle18(),
+
                     /// search button
                     suffixIcon: IconButton(
 
@@ -83,73 +84,76 @@ class _SearchNewsScreenState extends State<SearchNewsScreen> {
                             ));
                           }
                         },
+
                         /// search icon
                         icon: isLoading
                             ? const Center(child: CircularProgressIndicator())
                             : const Icon(
-                          Icons.search_rounded,
-                          size: 30,
-                          color: AppColors.secondary,
-                        ))),
+                                Icons.search_rounded,
+                                size: 30,
+                                color: AppColors.secondary,
+                              ))),
               ),
             ),
 
             /// Reflect Data here
-             articles.isEmpty
-                    ? Center(
-                        child: Text(
-                          "No News Found",
-                          style: myTextStyle18(
-                              textColor: AppColors.secondary.withOpacity(0.5)),
-                        ),
-                      )
-                    : ListView.builder(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: articles.length,
-                        itemBuilder: (context, index) {
-                          final myArticles = articles[index];
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ListTile(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)),
-                              tileColor: AppColors.secondary.withOpacity(0.2),
-                              leading: myArticles.urlToImage != null
-                                  ? Image.network(myArticles.urlToImage!)
-                                  : Image.asset("assets/images/newspaper.png"),
-                              title: Text(myArticles.title!,
-                                  maxLines: 2,
-                                  style: myTextStyle14(
-                                      textWeight: FontWeight.bold)),
-                              subtitle: Text(
-                                myArticles?.author ?? "online",
-                                maxLines: 1,
-                                style: myTextStyle14(
-                                    textColor: Colors.blue.shade900),
-                              ),
+            articles.isEmpty
+                ? Center(
+                    child: Text(
+                      "No News Found",
+                      style: myTextStyle18(
+                          textColor: AppColors.secondary.withOpacity(0.5)),
+                    ),
+                  )
+                : ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: articles.length,
+                    itemBuilder: (context, index) {
+                      final myArticles = articles[index];
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ListTile(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          tileColor: AppColors.secondary.withOpacity(0.2),
+                          leading: myArticles.urlToImage != null
+                              ? Image.network(myArticles.urlToImage!)
+                              : Image.asset("assets/images/newspaper.png"),
+                          title: Text(myArticles.title!,
+                              maxLines: 2,
+                              style:
+                                  myTextStyle14(textWeight: FontWeight.bold)),
+                          subtitle: Text(
+                            myArticles?.author ?? "online",
+                            maxLines: 1,
+                            style:
+                                myTextStyle14(textColor: Colors.blue.shade900),
+                          ),
 
-                              /// when click on list tile Navigate to Details screen
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => NewsDetailsScreen(
-                                            imagePath: myArticles.urlToImage
-                                                .toString(),
-                                          source: myArticles.source!.name.toString(),
+                          /// when click on list tile Navigate to Details screen
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => NewsDetailsScreen(
+                                          imagePath:
+                                              myArticles.urlToImage.toString(),
+                                          source: myArticles.source!.name
+                                              .toString(),
                                           title: myArticles.title.toString(),
-                                          desc: myArticles.description.toString(),
+                                          desc:
+                                              myArticles.description.toString(),
                                           cont: myArticles.content.toString(),
-                                          time: myArticles.publishedAt.toString(),
+                                          time:
+                                              myArticles.publishedAt.toString(),
                                           author: myArticles.author.toString(),
-
                                         )));
-                              },
-                            ),
-                          );
-                        },
-                      )
+                          },
+                        ),
+                      );
+                    },
+                  )
           ],
         ),
       ),

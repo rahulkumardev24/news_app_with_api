@@ -3,6 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_craft/constants/colors.dart';
 import 'package:cloud_craft/domain/utils.dart';
 import 'package:cloud_craft/screen/notifications_screen.dart';
+import 'package:cloud_craft/screen/view_all_breaking_news_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -151,9 +152,15 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       "Breaking News",
                       style: myTextStyle24(textWeight: FontWeight.bold),
                     ),
-                    Text(
-                      "View All",
-                      style: myTextStyle18(textColor: AppColors.primary),
+                    /// when click on View All Navigate to View All Screen
+                    InkWell(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const ViewAllBreakingNewsScreen()));
+                      },
+                      child: Text(
+                        "View All",
+                        style: myTextStyle18(textColor: AppColors.primary),
+                      ),
                     ),
                   ],
                 ),
@@ -221,8 +228,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                   fit: BoxFit.cover,
                                                   width: double.infinity,
                                                 )
-                                              : Image.asset(
-                                                  "assets/images/newspaper.png"),
+                                              : Center(
+                                                child: Image.asset(
+                                                    "assets/images/newspaper.png"),
+                                              ),
                                         ),
                                         Positioned(
                                             top: 8,

@@ -36,9 +36,9 @@ class _NewsDetailsScreenState extends State<NewsDetailsScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          Image.network(
+         widget.imagePath != null ? Image.network(
             widget.imagePath,
-          ),
+          ) : Image.asset("assets/images/newspaper.png"),
 
           /// back Button
           Positioned(

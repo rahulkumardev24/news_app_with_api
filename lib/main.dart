@@ -1,6 +1,7 @@
 import 'package:cloud_craft/screen/bottom_navigation/dashboard_screen.dart';
 import 'package:cloud_craft/screen/bottom_navigation/serach_news_screen.dart';
 import 'package:cloud_craft/screen/notifications_screen.dart';
+import 'package:cloud_craft/screen/view_all_breaking_news_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -50,4 +51,7 @@ class MyApp extends StatelessWidget {
 /// Home Screen => Done
 ///
 /// Step 5
-/// Notifications Screen
+/// Notifications Screen => DONE
+///
+/// Step 6
+/// View All Breaking news Screen => DONE

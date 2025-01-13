@@ -1,5 +1,6 @@
 import 'package:cloud_craft/screen/bottom_navigation/dashboard_screen.dart';
 import 'package:cloud_craft/screen/bottom_navigation/serach_news_screen.dart';
+import 'package:cloud_craft/screen/notifications_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: DashboardScreen(),
+      home: const DashboardScreen(),
     );
   }
 }
@@ -46,4 +47,7 @@ class MyApp extends StatelessWidget {
 /// Dashboard screen Create => DONE
 ///
 /// Step 4
-/// Home Screen
+/// Home Screen => Done
+///
+/// Step 5
+/// Notifications Screen

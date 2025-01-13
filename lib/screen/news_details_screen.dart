@@ -2,6 +2,8 @@ import 'package:cloud_craft/constants/colors.dart';
 import 'package:cloud_craft/domain/utils.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/my_icon_button.dart';
+
 class NewsDetailsScreen extends StatefulWidget {
   ///here we create constructor
   String imagePath;
@@ -42,19 +44,8 @@ class _NewsDetailsScreenState extends State<NewsDetailsScreen> {
           Positioned(
               top: 50,
               left: 10,
-              child: FloatingActionButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(100)),
-                backgroundColor: AppColors.secondary.withOpacity(0.6),
-                child: const Icon(
-                  Icons.arrow_back_rounded,
-                  size: 30,
-                  color: Colors.white,
-                ),
-              )),
+              child: MyIconButton(buttonIcon: Icons.arrow_back_rounded, onTap: () { Navigator.pop(context); },)
+          ),
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(

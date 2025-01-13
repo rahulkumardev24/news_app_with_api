@@ -2,6 +2,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_craft/constants/colors.dart';
 import 'package:cloud_craft/domain/utils.dart';
+import 'package:cloud_craft/screen/notifications_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -117,12 +118,20 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             Icons.account_circle,
             size: 45,
           ),
-          actions: const [
-            FaIcon(
-              FontAwesomeIcons.bell,
-              size: 30,
+          actions:  [
+
+            /// when Click on bell button Navigate to Notifications Screen
+            InkWell(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> const NotificationsScreen()));
+
+              },
+              child: const FaIcon(
+                FontAwesomeIcons.bell,
+                size: 30,
+              ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 12,
             )
           ],

@@ -130,6 +130,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               /// Here we show Breaking News
               Padding(
@@ -158,7 +159,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
                   /// inside the items we show breaking news
                   items: breakingNews.isEmpty
-                      ? [const Center(child: CircularProgressIndicator())]
+                      ? [
+                          const Center(
+                              child: CircularProgressIndicator(
+                            color: AppColors.secondary,
+                            strokeWidth: 5,
+                          ))
+                        ]
                       : breakingNews.map((article) {
                           /// when click on slider navigate to details screen
                           return GestureDetector(
@@ -284,7 +291,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 12,
               ),
 
@@ -320,20 +327,85 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 indicator: const BoxDecoration(color: Colors.transparent),
                 labelPadding: const EdgeInsets.symmetric(horizontal: 8),
               ),
-
               isLoading
-                  ? const Center(child: CircularProgressIndicator())
-                  : ListView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: headingNews.length,
-                      itemBuilder: (context, index) {
-                        /// Design Heading News
-                        return ListTile(
-                          title: Text("${headingNews[index].title}"),
-                        );
-                      },
-                    ),
+                  ? const Center(
+                      child: Padding(
+                      padding: EdgeInsets.only(top: 21.0),
+                      child: CircularProgressIndicator(
+                        color: AppColors.secondary,
+                        strokeWidth: 5,
+                      ),
+                    ))
+                  : headingNews.isEmpty
+                      ? const CircularProgressIndicator(
+                          strokeWidth: 5,
+                          color: AppColors.secondary,
+                        )
+                      : ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: headingNews.length,
+                          itemBuilder: (context, index) {
+                            final myHeading = headingNews[index];
+
+                            /// Design Heading News
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 10.0, vertical: 6),
+                              child: ListTile(
+                                tileColor: Colors.black12,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12),
+                                    side: const BorderSide(
+                                        width: 1, color: AppColors.primary)),
+                                title: Text(
+                                  "${myHeading.title}",
+                                  maxLines: 2,
+                                  style: myTextStyle18(
+                                      textWeight: FontWeight.bold),
+                                ),
+                                subtitle: Text(
+                                  "${myHeading.source!.name}",
+                                  style: myTextStyle18(
+                                      textColor: AppColors.primary,
+                                      textWeight: FontWeight.bold),
+                                  maxLines: 1,
+                                ),
+                                leading: myHeading.urlToImage != null
+                                    ? ClipRRect(
+                                        borderRadius: BorderRadius.circular(5),
+                                        child: Image.network(
+                                          "${myHeading.urlToImage}",
+                                          width: 80,
+                                          fit: BoxFit.cover,
+                                          height: 80,
+                                        ))
+                                    : Image.asset(
+                                        "assets/images/newspaper.png"),
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => NewsDetailsScreen(
+                                              imagePath: myHeading.urlToImage ??
+                                                  "assets/images/newspaper.png",
+                                              source: myHeading.source?.name ??
+                                                  "No Found",
+                                              title:
+                                                  myHeading.title ?? "No Found",
+                                              desc: myHeading.description ??
+                                                  "No Found",
+                                              cont: myHeading.content ??
+                                                  "No Found",
+                                              time: myHeading.publishedAt ??
+                                                  "No Found",
+                                              author: myHeading.author ??
+                                                  "No Found")));
+                                },
+                              ),
+                            );
+                          },
+                        ),
             ],
           ),
         ),
@@ -348,4 +420,5 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 ///
 /// Breaking News fetch => DONE
 ///
-/// Headlines Show
+/// Headlines Show => Done
+/// Home screen Done => CHECK => Solve all error

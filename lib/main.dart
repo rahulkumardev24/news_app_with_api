@@ -1,3 +1,4 @@
+import 'package:cloud_craft/screen/bottom_navigation/categories_screen.dart';
 import 'package:cloud_craft/screen/bottom_navigation/dashboard_screen.dart';
 import 'package:cloud_craft/screen/bottom_navigation/serach_news_screen.dart';
 import 'package:cloud_craft/screen/notifications_screen.dart';
@@ -10,8 +11,6 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -55,3 +54,9 @@ class MyApp extends StatelessWidget {
 ///
 /// Step 6
 /// View All Breaking news Screen => DONE
+///
+/// Step 7
+/// categories screen => DONE
+///
+/// Step 8
+/// Save Screen =>

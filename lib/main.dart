@@ -3,6 +3,7 @@ import 'package:cloud_craft/screen/bottom_navigation/dashboard_screen.dart';
 import 'package:cloud_craft/screen/bottom_navigation/profile_screen.dart';
 import 'package:cloud_craft/screen/bottom_navigation/serach_news_screen.dart';
 import 'package:cloud_craft/screen/notifications_screen.dart';
+import 'package:cloud_craft/screen/splash_screen.dart';
 import 'package:cloud_craft/screen/view_all_breaking_news_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -21,13 +22,10 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const DashboardScreen(),
+      home: const SplashScreen(),
     );
   }
 }
-
-
-
 
 /// IN THIS VIDEO WE CREATE News App
 /// COMPLETE NEWS APP
@@ -64,3 +62,23 @@ class MyApp extends StatelessWidget {
 
 /// Step 9
 /// Profile Screen => DONE
+///
+/// Step 10
+/// Splash Screen => Done
+///
+/// Step 11
+/// Final review and solve some problem
+///
+/// Step 12
+/// App Icon Change => DONE
+///
+/// ____________________________________Final Test_________________________________________
+/// ___________________________________-OUR PROJECT IS READY-______________________________
+///
+///
+///
+///
+///
+///
+///
+///

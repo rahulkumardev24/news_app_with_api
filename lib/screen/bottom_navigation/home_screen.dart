@@ -115,9 +115,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               ),
             ],
           ),
-          leading: const Icon(
-            Icons.account_circle,
-            size: 45,
+          leading: Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(100),
+                child: Image.asset("assets/images/pr.jpg")),
           ),
           actions:  [
 

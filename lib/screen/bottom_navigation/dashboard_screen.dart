@@ -41,22 +41,23 @@ class _DashboardScreenState extends State<DashboardScreen> {
             currentScreen = index;
             setState(() {});
           },
-          items: const [
-            TabItem(
+          items:  [
+            const TabItem(
               icon: Center(child: FaIcon(FontAwesomeIcons.house)),
               title: "Home",
             ),
-            TabItem(
+            const TabItem(
                 icon: Center(child: FaIcon(FontAwesomeIcons.magnifyingGlass)),
                 title: "Search"),
-            TabItem(
+            const TabItem(
                 icon: Center(child: FaIcon(FontAwesomeIcons.globe)),
                 title: "Categories"),
-            TabItem(
+            const TabItem(
                 icon: Center(child: FaIcon(FontAwesomeIcons.bookBookmark)),
                 title: "Save"),
             TabItem(
-                icon: Center(child: FaIcon(FontAwesomeIcons.user)),
+                icon: Center(child: ClipRRect(borderRadius: BorderRadius.circular(100),
+                    child: Image.asset("assets/images/pr.jpg"))),
                 title: "Profile"),
           ]),
     );

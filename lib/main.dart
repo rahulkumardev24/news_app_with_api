@@ -1,5 +1,6 @@
 import 'package:cloud_craft/screen/bottom_navigation/categories_screen.dart';
 import 'package:cloud_craft/screen/bottom_navigation/dashboard_screen.dart';
+import 'package:cloud_craft/screen/bottom_navigation/profile_screen.dart';
 import 'package:cloud_craft/screen/bottom_navigation/serach_news_screen.dart';
 import 'package:cloud_craft/screen/notifications_screen.dart';
 import 'package:cloud_craft/screen/view_all_breaking_news_screen.dart';
@@ -59,4 +60,7 @@ class MyApp extends StatelessWidget {
 /// categories screen => DONE
 ///
 /// Step 8
-/// Save Screen =>
+/// Save Screen => DONE
+
+/// Step 9
+/// Profile Screen => DONE

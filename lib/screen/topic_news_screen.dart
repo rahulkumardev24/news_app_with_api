@@ -185,3 +185,6 @@ class _TopicNewsScreenState extends State<TopicNewsScreen> {
 }
 
 /// Complete
+///
+/// by Mistake Topic news screen not record
+/// see the code and implement

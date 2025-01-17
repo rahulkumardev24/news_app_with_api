@@ -11,6 +11,8 @@ A few resources to get you started if this is your first Flutter project:
 <img src = "https://github.com/rahulkumardev24/news_app_with_api/blob/master/Screenshot_20250115_014750.png" height = 500 />
 <img src = "https://github.com/rahulkumardev24/news_app_with_api/blob/master/Screenshot_20250115_014825.png" height = 500/>
 <img src = "https://github.com/rahulkumardev24/news_app_with_api/blob/master/Screenshot_20250115_014913.png" height = 500/>
+  <img src ="https://github.com/rahulkumardev24/news_app_with_api/blob/master/Screenshot_20250116_195509.png" height = 500/>
+  <img src = "https://github.com/rahulkumardev24/news_app_with_api/blob/master/Screenshot_20250116_195347.png" height = 500/>
 <img src = "https://github.com/rahulkumardev24/news_app_with_api/blob/master/Screenshot_20250115_015145.png" height = 500/>
 <img src = "https://github.com/rahulkumardev24/news_app_with_api/blob/master/Screenshot_20250115_014942.png" height = 500/>
 <img src = "https://github.com/rahulkumardev24/news_app_with_api/blob/master/Screenshot_20250115_015135.png" height = 500/>

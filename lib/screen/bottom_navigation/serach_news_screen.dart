@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_craft/constants/colors.dart';
 import 'package:cloud_craft/data/api/api_helper.dart';
 import 'package:cloud_craft/domain/utils.dart';
@@ -21,6 +22,7 @@ class _SearchNewsScreenState extends State<SearchNewsScreen> {
   void fetchNews(String query) async {
     setState(() {
       isLoading = true;
+      articles.clear();
     });
     final newsData = await ApiHelper.fetchNews(query);
     if (newsData != null && newsData.articles != null) {
@@ -118,14 +120,17 @@ class _SearchNewsScreenState extends State<SearchNewsScreen> {
                               borderRadius: BorderRadius.circular(10)),
                           tileColor: AppColors.secondary.withOpacity(0.2),
                           leading: myArticles.urlToImage != null
-                              ? Image.network(myArticles.urlToImage!)
+                              ? CachedNetworkImage(
+                                  width: 80,
+                                  imageUrl: myArticles.urlToImage!,
+                                )
                               : Image.asset("assets/images/newspaper.png"),
                           title: Text(myArticles.title!,
                               maxLines: 2,
                               style:
                                   myTextStyle14(textWeight: FontWeight.bold)),
                           subtitle: Text(
-                            myArticles?.author ?? "online",
+                            myArticles.author ?? "online",
                             maxLines: 1,
                             style:
                                 myTextStyle14(textColor: Colors.blue.shade900),

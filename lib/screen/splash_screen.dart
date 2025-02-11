@@ -16,10 +16,12 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 2) , (){
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const DashboardScreen()));
+    Timer(const Duration(seconds: 2), () {
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context) => const DashboardScreen()));
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +31,9 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 200,),
+            const SizedBox(
+              height: 200,
+            ),
             Image.asset(
               "assets/icons/news.png",
               height: 200,
@@ -49,9 +53,10 @@ class _SplashScreenState extends State<SplashScreen> {
               style: myTextStyle24(
                   textColor: AppColors.secondary.withOpacity(0.5),
                   textWeight: FontWeight.bold),
-            ) ,
-            const SizedBox(height: 21,)
-
+            ),
+            const SizedBox(
+              height: 21,
+            )
           ],
         ),
       ),

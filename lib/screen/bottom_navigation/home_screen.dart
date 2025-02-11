@@ -1,4 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_craft/constants/colors.dart';
 import 'package:cloud_craft/domain/utils.dart';
@@ -118,16 +119,17 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           leading: Padding(
             padding: const EdgeInsets.all(4.0),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(100),
+                borderRadius: BorderRadius.circular(100),
                 child: Image.asset("assets/images/pr.jpg")),
           ),
-          actions:  [
-
+          actions: [
             /// when Click on bell button Navigate to Notifications Screen
             InkWell(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=> const NotificationsScreen()));
-
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const NotificationsScreen()));
               },
               child: const FaIcon(
                 FontAwesomeIcons.bell,
@@ -154,10 +156,15 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       "Breaking News",
                       style: myTextStyle24(textWeight: FontWeight.bold),
                     ),
+
                     /// when click on View All Navigate to View All Screen
                     InkWell(
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => const ViewAllBreakingNewsScreen()));
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const ViewAllBreakingNewsScreen()));
                       },
                       child: Text(
                         "View All",
@@ -225,15 +232,19 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                               const BorderRadius.vertical(
                                                   top: Radius.circular(20)),
                                           child: article.urlToImage != null
-                                              ? Image.network(
-                                                  article.urlToImage!,
+                                              ? CachedNetworkImage(
+                                                  imageUrl: article.urlToImage!,
                                                   fit: BoxFit.cover,
                                                   width: double.infinity,
+                                                  placeholder: (context, url) =>
+                                                  const Center(child: CircularProgressIndicator(),
+                                                  ),
+                                            errorWidget: (context , url , error) =>const Center(child: Icon(Icons.error)),
                                                 )
                                               : Center(
-                                                child: Image.asset(
-                                                    "assets/images/newspaper.png"),
-                                              ),
+                                                  child: Image.asset(
+                                                      "assets/images/newspaper.png"),
+                                                ),
                                         ),
                                         Positioned(
                                             top: 8,
@@ -394,11 +405,19 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                 leading: myHeading.urlToImage != null
                                     ? ClipRRect(
                                         borderRadius: BorderRadius.circular(5),
-                                        child: Image.network(
-                                          "${myHeading.urlToImage}",
+                                        child: CachedNetworkImage(
+                                          imageUrl: "${myHeading.urlToImage}",
                                           width: 80,
                                           fit: BoxFit.cover,
                                           height: 80,
+                                          placeholder: (context, url) =>
+                                              const Center(
+                                            child: CircularProgressIndicator(),
+                                          ),
+                                          errorWidget: (context, url, error) =>
+                                              const Center(
+                                            child: Icon(Icons.error),
+                                          ),
                                         ))
                                     : Image.asset(
                                         "assets/images/newspaper.png"),

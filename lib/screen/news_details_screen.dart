@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_craft/constants/colors.dart';
 import 'package:cloud_craft/domain/utils.dart';
 import 'package:flutter/material.dart';
@@ -36,16 +37,25 @@ class _NewsDetailsScreenState extends State<NewsDetailsScreen> {
     return Scaffold(
       body: Stack(
         children: [
-         widget.imagePath != null ? Image.network(
-            widget.imagePath,
-          ) : Image.asset("assets/images/newspaper.png"),
+
+          widget.imagePath != null
+              ? CachedNetworkImage(
+            imageUrl: widget.imagePath,
+            placeholder: (context , url)=> const Center(child: CircularProgressIndicator()),
+            errorWidget: (context , url , error) => const Center(child: Icon(Icons.error)),
+                )
+              : Image.asset("assets/images/newspaper.png"),
 
           /// back Button
           Positioned(
               top: 50,
               left: 10,
-              child: MyIconButton(buttonIcon: Icons.arrow_back_rounded, onTap: () { Navigator.pop(context); },)
-          ),
+              child: MyIconButton(
+                buttonIcon: Icons.arrow_back_rounded,
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              )),
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
@@ -150,16 +160,8 @@ class _NewsDetailsScreenState extends State<NewsDetailsScreen> {
                       height: 8,
                     ),
 
-                    Container(
-                      width: mqData!.size.width * 0.6,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                              width: 2, color: AppColors.primaryLight),
-                          boxShadow: const [
-                            BoxShadow(blurRadius: 3, color: Colors.black)
-                          ]),
+                    Flexible(
+                      fit: FlexFit.tight,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -167,9 +169,12 @@ class _NewsDetailsScreenState extends State<NewsDetailsScreen> {
                             "assets/icons/verified-profile.png",
                             height: 40,
                           ),
-                          Text(
-                            widget.author,
-                            style: myTextStyle18(),
+                          Expanded(
+                            child: Text(
+                              widget.author,
+                              maxLines: 2,
+                              style: myTextStyle18(),
+                            ),
                           ),
                         ],
                       ),

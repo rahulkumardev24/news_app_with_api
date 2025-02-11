@@ -23,6 +23,7 @@ class _MyIconButtonState extends State<MyIconButton> {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
+      heroTag: null,
       elevation: 4,
       onPressed: widget.onTap,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),

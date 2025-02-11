@@ -19,7 +19,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   /// here we call call these screen
   List<Widget> screen = [
     const HomeScreen(),
-    const SearchNewsScreen(),
+    SearchNewsScreen(),
     const CategoriesScreen(),
     const BookmarkScreen(),
     const ProfileScreen(),
